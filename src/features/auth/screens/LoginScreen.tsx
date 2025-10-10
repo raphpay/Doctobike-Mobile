@@ -23,6 +23,8 @@ export default function LoginScreen() {
         value={email}
         onChangeText={setEmail}
         mode="outlined"
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <TextInput
         label="Mot de passe"

@@ -1,4 +1,4 @@
-import { signIn } from "@/src/lib/signIn";
+import { signIn } from "@/src/features/auth/api/signIn";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 

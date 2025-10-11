@@ -17,7 +17,7 @@ export default function useLoginScreen() {
   }
 
   function tapOnSignUp() {
-    router.push("/auth/signUp");
+    router.push("/signUp");
   }
 
   return {

@@ -1,13 +1,15 @@
 import { signOut } from "@/src/features/auth/api/signOut";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
+const DashboardScreen = () => {
+  const router = useRouter();
 
-const DashboardScreen = (props: Props) => {
   async function tapOnLogout() {
     await signOut();
+    router.replace("/");
   }
 
   return (

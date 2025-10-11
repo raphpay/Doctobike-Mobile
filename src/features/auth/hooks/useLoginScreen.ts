@@ -9,11 +9,8 @@ export default function useLoginScreen() {
   const router = useRouter();
 
   async function tapOnLogin() {
-    console.log("login");
     try {
-      console.log("1");
       const res = await signIn(email, password);
-      console.log("2", res);
     } catch (error) {
       console.log("err", error);
     }

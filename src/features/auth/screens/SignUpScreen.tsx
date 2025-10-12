@@ -1,5 +1,6 @@
 import useSignUpScreen from "@/src/features/auth/hooks/useSignUpScreen";
 import Button from "@/src/shared/components/Button";
+import SecureTextInput from "@/src/shared/components/SecureTextInput";
 import React from "react";
 import { Text } from "react-native";
 import { TextInput } from "react-native-paper";
@@ -31,12 +32,10 @@ const SignUpScreen = () => {
         onChangeText={setEmail}
         mode="outlined"
       />
-      <TextInput
+      <SecureTextInput
         label="Mot de passe"
         value={password}
         onChangeText={setPassword}
-        mode="outlined"
-        secureTextEntry={true}
       />
       <Button title={"Créer un compte"} onPress={tapOnSubmit} />
     </SafeAreaView>

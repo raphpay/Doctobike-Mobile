@@ -1,5 +1,6 @@
 import useLoginScreen from "@/src/features/auth/hooks/useLoginScreen";
 import Button from "@/src/shared/components/Button";
+import SecureTextInput from "@/src/shared/components/SecureTextInput";
 import { Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -27,11 +28,10 @@ export default function LoginScreen() {
         autoCapitalize="none"
         autoCorrect={false}
       />
-      <TextInput
-        label="Mot de passe"
+      <SecureTextInput
+        label={"Mot de passe"}
         value={password}
         onChangeText={setPassword}
-        mode="outlined"
       />
 
       <Button title={"Se connecter"} onPress={tapOnLogin} />

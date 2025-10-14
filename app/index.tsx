@@ -1,7 +1,7 @@
 import useAuth from "@/src/features/auth/hooks/useAuth";
-import LoginScreen from "@/src/features/auth/screens/LoginScreen";
 import { ActivityIndicator, View } from "react-native";
 import DashboardScreen from "./dashboard";
+import LoginScreen from "./login";
 
 export default function RootScreen() {
   const { user, loading } = useAuth();
@@ -14,5 +14,7 @@ export default function RootScreen() {
     );
   }
 
-  return user ? <DashboardScreen /> : <LoginScreen />;
+  if (user) return <DashboardScreen />;
+
+  return <LoginScreen />;
 }

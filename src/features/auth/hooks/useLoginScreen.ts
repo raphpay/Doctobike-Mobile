@@ -1,4 +1,4 @@
-import { signIn } from "@/src/lib/signIn";
+import { signIn } from "@/src/features/auth/api/signIn";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
@@ -9,18 +9,15 @@ export default function useLoginScreen() {
   const router = useRouter();
 
   async function tapOnLogin() {
-    console.log("login");
     try {
-      console.log("1");
       const res = await signIn(email, password);
-      console.log("2", res);
     } catch (error) {
       console.log("err", error);
     }
   }
 
   function tapOnSignUp() {
-    router.push("/auth/signUp");
+    router.push("/signUp");
   }
 
   return {

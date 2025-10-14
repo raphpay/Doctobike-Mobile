@@ -1,5 +1,5 @@
 import { supabase } from "@/src/lib/supabase";
-import type { Session, User } from "@supabase/supabase-js";
+import type { User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
 export default function useAuth() {
@@ -7,23 +7,25 @@ export default function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get current user on mount
-    const getUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user ?? null);
+    let ignore = false;
+
+    const init = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!ignore) setUser(data.session?.user ?? null);
       setLoading(false);
     };
-    getUser();
 
-    // Subscribe to auth changes
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session: Session | null) => {
-        setUser(session?.user ?? null);
-      }
-    );
+    init();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
 
     return () => {
-      listener.subscription.unsubscribe();
+      ignore = true;
+      subscription.unsubscribe();
     };
   }, []);
 

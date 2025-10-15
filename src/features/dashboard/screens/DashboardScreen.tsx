@@ -10,10 +10,10 @@ const DashboardScreen = () => {
     <SafeAreaView>
       <Text>DashboardScreen</Text>
       <TouchableOpacity onPress={tapOnSeeBikes}>
-        Voir mes vélos
+        <Text>Voir mes vélos</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={tapOnCreateBike}>
-        Ajouter un vélo
+        <Text>Ajouter un vélo</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={tapOnLogout}>
         <Text>Déconnexion</Text>

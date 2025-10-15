@@ -5,7 +5,7 @@ import { Button, TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const BikeCreationScreen = () => {
-  const { formData, handleFormDataChange, tapOnSubmit } =
+  const { formData, isSubmitDisabled, handleFormDataChange, tapOnSubmit } =
     useBikeCreationScreen();
 
   return (
@@ -40,7 +40,9 @@ const BikeCreationScreen = () => {
         }
       />
 
-      <Button onPress={tapOnSubmit}>Sauvegarder</Button>
+      <Button disabled={isSubmitDisabled} onPress={tapOnSubmit}>
+        Sauvegarder
+      </Button>
     </SafeAreaView>
   );
 };

@@ -9,12 +9,13 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "jest --coverage=true",
-    "test-no-coverage": "jest --coverage=false"
+    "test": "jest --detectOpenHandles --coverage=false",
+    "test-cov": "jest --detectOpenHandles --coverage=true"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
     "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-native-community/datetimepicker": "^8.4.5",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
@@ -46,8 +47,6 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/react": "^16.3.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^30.0.0",
@@ -56,20 +55,11 @@
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
     "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "jest-expo": "^54.0.12",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "react-test-renderer": "^19.2.0",
+    "react-test-renderer": "19.1.0",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.44.0"
-  },
-  "jest": {
-    "preset": "jest-expo",
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
-    ]
-  },
-  "private": true
+  }
 }

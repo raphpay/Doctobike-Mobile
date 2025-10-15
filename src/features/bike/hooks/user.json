@@ -1,0 +1,41 @@
+{
+  "id": "4fcc33b9-f6d2-4abc-81f9-8e52d5495708",
+  "aud": "authenticated",
+  "role": "authenticated",
+  "email": "raph@test.com",
+  "email_confirmed_at": "2025-10-11T14:30:25.634083Z",
+  "phone": "",
+  "confirmed_at": "2025-10-11T14:30:25.634083Z",
+  "last_sign_in_at": "2025-10-12T10:57:34.466846Z",
+  "app_metadata": {
+    "provider": "email",
+    "providers": ["email"]
+  },
+  "user_metadata": {
+    "email": "raph@test.com",
+    "email_verified": true,
+    "phone_verified": false,
+    "sub": "4fcc33b9-f6d2-4abc-81f9-8e52d5495708"
+  },
+  "identities": [
+    {
+      "identity_id": "9a80541c-c2dd-4206-82b1-9e96a2636897",
+      "id": "4fcc33b9-f6d2-4abc-81f9-8e52d5495708",
+      "user_id": "4fcc33b9-f6d2-4abc-81f9-8e52d5495708",
+      "identity_data": {
+        "email": "raph@test.com",
+        "email_verified": false,
+        "phone_verified": false,
+        "sub": "4fcc33b9-f6d2-4abc-81f9-8e52d5495708"
+      },
+      "provider": "email",
+      "last_sign_in_at": "2025-10-11T14:30:25.627416Z",
+      "created_at": "2025-10-11T14:30:25.627473Z",
+      "updated_at": "2025-10-11T14:30:25.627473Z",
+      "email": "raph@test.com"
+    }
+  ],
+  "created_at": "2025-10-11T14:30:25.612243Z",
+  "updated_at": "2025-10-15T02:53:35.071663Z",
+  "is_anonymous": false
+}

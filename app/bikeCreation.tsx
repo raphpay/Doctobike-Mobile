@@ -1,3 +1,3 @@
-import DashboardScreen from "@/src/features/dashboard/screens/DashboardScreen";
+import BikeCreationScreen from "@/app/bike/create";
 
-export default DashboardScreen;
+export default BikeCreationScreen;

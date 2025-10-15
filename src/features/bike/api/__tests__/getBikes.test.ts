@@ -1,7 +1,7 @@
 import { supabase } from "@/src/lib/supabase";
 import { getBikes } from "../getBikes";
 
-jest.mock("@/src//lib/supabase", () => ({
+jest.mock("@/src/lib/supabase", () => ({
   supabase: {
     from: jest.fn(),
   },

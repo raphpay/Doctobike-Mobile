@@ -45,3 +45,6 @@ app-example
 
 # Coverage
 coverage/*
+
+# Other
+*.save

@@ -3,7 +3,7 @@ module.exports = {
   preset: "react-native",
   testEnvironment: "node",
 
-  // setupFiles: ["<rootDir>/jest.setup.js"],
+  setupFiles: ["<rootDir>/jest.setup.js"],
 
   moduleDirectories: ["node_modules", "<rootDir>/src"],
 

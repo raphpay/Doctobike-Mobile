@@ -1,32 +1,38 @@
 import useBikeCreationScreen from "@/src/features/bike/hooks/useBikeCreationScreen";
+import FormInput from "@/src/shared/components/FormInput";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import React from "react";
-import { Button, TextInput } from "react-native-paper";
+import { Button } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const BikeCreationScreen = () => {
-  const { formData, isSubmitDisabled, handleFormDataChange, tapOnSubmit } =
-    useBikeCreationScreen();
+  const {
+    formData,
+    isSubmitDisabled,
+    errors,
+    handleFormDataChange,
+    tapOnSubmit,
+  } = useBikeCreationScreen();
 
   return (
     <SafeAreaView className="flex flex-col gap-2 justify-center">
-      <TextInput
+      <FormInput
         label={"Marque"}
         value={formData.brand}
         onChangeText={(value) => handleFormDataChange("brand", value)}
-        mode="outlined"
+        error={errors.brand}
       />
-      <TextInput
+      <FormInput
         label={"Modèle du vélo"}
         value={formData.model}
         onChangeText={(value) => handleFormDataChange("model", value)}
-        mode="outlined"
+        error={errors.model}
       />
-      <TextInput
+      <FormInput
         label={"Numéro de série"}
         value={formData.serialNumber}
         onChangeText={(value) => handleFormDataChange("serialNumber", value)}
-        mode="outlined"
+        error={errors.serialNumber}
       />
 
       <DateTimePicker

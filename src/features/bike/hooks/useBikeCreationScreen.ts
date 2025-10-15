@@ -12,6 +12,10 @@ type BikeFormData = {
   purchaseDate: Date;
 };
 
+type BikeFormErrors = {
+  [K in keyof BikeFormData]?: string;
+};
+
 export default function useBikeCreationScreen() {
   const { user } = useAuth();
   const { showToast } = useToast();
@@ -22,10 +26,35 @@ export default function useBikeCreationScreen() {
     serialNumber: "",
     purchaseDate: new Date(),
   });
+  const [errors, setErrors] = useState<BikeFormErrors>({});
   const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
+
+  function validateForm(): boolean {
+    const newErrors: BikeFormErrors = {};
+
+    if (!formData.brand.trim()) newErrors.brand = "Brand is required";
+    if (!formData.model.trim()) newErrors.model = "Model is required";
+    if (!formData.serialNumber.trim())
+      newErrors.serialNumber = "Serial number is required";
+    if (!formData.purchaseDate)
+      newErrors.purchaseDate = "Purchase date is required";
+
+    setErrors(newErrors);
+
+    // Return true if no errors
+    return Object.keys(newErrors).length === 0;
+  }
 
   async function tapOnSubmit() {
     setIsSubmitDisabled(true);
+
+    const isValid = validateForm();
+    if (!isValid) {
+      showToast("Please fill all required fields", ToastType.ERROR);
+      setIsSubmitDisabled(false);
+      return;
+    }
+
     if (user) {
       try {
         await createBike({
@@ -43,6 +72,8 @@ export default function useBikeCreationScreen() {
           purchaseDate: new Date(),
         });
 
+        setErrors({});
+
         setTimeout(() => {
           router.back();
         }, 2000);
@@ -58,11 +89,17 @@ export default function useBikeCreationScreen() {
     field: K,
     value: BikeFormData[K]
   ) {
-    setFormData((prev: any) => ({
-      ...prev,
-      [field]: value,
-    }));
+    setFormData((prev: any) => ({ ...prev, [field]: value }));
+
+    // Clear that field's error
+    setErrors((prev) => ({ ...prev, [field]: undefined }));
   }
 
-  return { formData, isSubmitDisabled, handleFormDataChange, tapOnSubmit };
+  return {
+    formData,
+    errors,
+    isSubmitDisabled,
+    handleFormDataChange,
+    tapOnSubmit,
+  };
 }
